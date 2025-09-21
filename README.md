@@ -77,10 +77,9 @@ const response = await fetch("https://your-render-url/api/calculate", {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ num1, num2, operator })
 });
+
 Technologies Used
 Java 17
-
 Spring Boot 3
-
 HTML, CSS, JavaScript
 
