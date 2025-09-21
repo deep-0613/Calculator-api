@@ -127,19 +127,14 @@
 
       try {
         const url = `https://calculator-api-cisu.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`;
+        const response = await fetch(url, { method: "POST" });
 
-        const response = await fetch(url, {
-          method: "POST"
-        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.text(); // or response.json() if backend returns JSON
+        const result = await response.text();
         updateDisplay(result);
 
-        // Reset for next calculation
+        // Prepare for next calculation
         num1 = result;
         num2 = '';
         operator = '';
