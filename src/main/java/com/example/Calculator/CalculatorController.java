@@ -2,16 +2,16 @@ package com.example.calculator;
 
 import org.springframework.web.bind.annotation.*;
 
-@RestController                  // Marks this class as an API controller
-@RequestMapping("/api")          // Base URL for all endpoints in this class
+@CrossOrigin(origins = "*") // allow requests from any origin
+@RestController
+@RequestMapping("/api")
 public class CalculatorController {
 
-    // POST API endpoint: /api/calculate
     @PostMapping("/calculate")
     public double calculate(
-            @RequestParam double num1,      // first number from request
-            @RequestParam double num2,      // second number from request
-            @RequestParam String operator   // operator: add, subtract, multiply, divide
+            @RequestBody double num1,
+            @RequestBody double num2,
+            @RequestBody String operator
     ) {
         switch (operator.toLowerCase()) {
             case "add":

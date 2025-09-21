@@ -126,12 +126,17 @@
       if (num1 === '' || num2 === '' || operator === '') return;
 
       try {
-        // Change this URL to your Render-deployed API
-        const response = await fetch(`https://your-app.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`, {
+        const url = `https://calculator-api-cisu.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`;
+
+        const response = await fetch(url, {
           method: "POST"
         });
 
-        const result = await response.text();
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.text(); // or response.json() if backend returns JSON
         updateDisplay(result);
 
         // Reset for next calculation
@@ -139,7 +144,9 @@
         num2 = '';
         operator = '';
         isSecondNumber = false;
+
       } catch (error) {
+        console.error(error);
         updateDisplay("Error");
       }
     }
