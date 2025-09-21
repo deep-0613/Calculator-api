@@ -2,17 +2,24 @@ package com.example.calculator;
 
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*") // allow requests from any origin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class CalculatorController {
 
+    // DTO for request
+    public static class CalcRequest {
+        public double num1;
+        public double num2;
+        public String operator;
+    }
+
     @PostMapping("/calculate")
-    public double calculate(
-            @RequestBody double num1,
-            @RequestBody double num2,
-            @RequestBody String operator
-    ) {
+    public double calculate(@RequestBody CalcRequest request) {
+        double num1 = request.num1;
+        double num2 = request.num2;
+        String operator = request.operator;
+
         switch (operator.toLowerCase()) {
             case "add":
                 return num1 + num2;
