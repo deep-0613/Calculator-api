@@ -1,109 +1,86 @@
-Calculator API
+# Calculator API
 
-A simple REST API calculator built with Spring Boot, allowing addition, subtraction, multiplication, and division. The project also includes a front-end HTML calculator that interacts with the API.
+A simple calculator web application with a Spring Boot backend and a frontend built using HTML, CSS, and JavaScript.
 
-Features
+---
 
-Addition, subtraction, multiplication, and division.
+## Features
 
-REST API with POST requests.
+- Addition, Subtraction, Multiplication, Division
+- Connects frontend to backend API
+- Can be deployed online or run locally
 
-Front-end HTML calculator with live interaction.
+---
 
-Cross-origin requests allowed (CORS enabled).
+## Response Example
 
-Deployable locally or on Render.
-
-Demo
-
-The API is deployed on Render:
-https://calculator-api-cisu.onrender.com
-
-API Usage
-Endpoint
-POST /api/calculate
-
-Request Headers
-Content-Type: application/json
-
-Request Body
-{
-  "num1": 10,
-  "num2": 40,
-  "operator": "add"
-}
-
-
-Operators: add, subtract, multiply, divide
-
-Response
 50.0
 
-Example with cURL
-curl -X POST https://calculator-api-cisu.onrender.com/api/calculate \
--H "Content-Type: application/json" \
--d '{"num1":10,"num2":40,"operator":"add"}'
+yaml
+Copy code
 
-Testing in Postman
+---
 
-Open Postman.
+## Run Locally
 
-Create a new POST request.
+1. **Clone the repository:**
 
-Enter the URL:
+```bash
+git clone https://github.com/deep-0613/Calculator-api.git
+Navigate to the project folder:
 
-https://calculator-api-cisu.onrender.com/api/calculate
+bash
+Copy code
+cd Calculator-api
+Run the Spring Boot application:
 
+bash
+Copy code
+mvn spring-boot:run
+Open your browser at http://localhost:8080 to use the calculator.
 
-Go to the Headers tab and add:
+Testing via Postman
+Open Postman and create a POST request to:
 
-Key	Value
-Content-Type	application/json
+bash
+Copy code
+http://localhost:8080/api/calculate
+Set Headers:
 
-Go to the Body tab, select raw and JSON, then paste:
+pgsql
+Copy code
+Content-Type: application/json
+Set Body as raw JSON. Example:
 
+json
+Copy code
 {
   "num1": 10,
   "num2": 40,
   "operator": "add"
 }
-
-
 Click Send. You should receive:
 
+Copy code
 50.0
+For the deployed version on Render, replace localhost:8080 with your Render API URL.
 
-Front-End Usage
+Deployment
+The project can be deployed to services like Render or Heroku.
 
-HTML file: index.html
+Make sure to set the backend API URL in your frontend code:
 
-Connects to the API for live calculations.
-
-Open index.html in the browser, enter numbers and select an operator, then click = to get the result.
-
-Running Locally
-
-Clone the repository:
-
-git clone https://github.com/deep-0613/Calculator-api.git
-cd Calculator-api
-
-
-Make sure you have Java 17 and Maven installed.
-
-Run the application:
-
-mvn spring-boot:run
-
-
-Open your browser:
-
-http://localhost:8080/
-
-Dependencies
-
-Spring Boot 3.x
-
-Maven
-
+javascript
+Copy code
+const response = await fetch("https://your-render-url/api/calculate", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ num1, num2, operator })
+});
+Technologies Used
 Java 17
+
+Spring Boot 3
+
+HTML, CSS, JavaScript
+
