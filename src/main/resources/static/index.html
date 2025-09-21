@@ -126,8 +126,12 @@
       if (num1 === '' || num2 === '' || operator === '') return;
 
       try {
-        const url = `https://calculator-api-cisu.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`;
-        const response = await fetch(url, { method: "POST" });
+       const response = await fetch("http://localhost:8080/api/calculate", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({ num1, num2, operator })
+       });
+
 
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
