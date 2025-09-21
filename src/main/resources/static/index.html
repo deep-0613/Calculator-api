@@ -127,9 +127,10 @@
 
       try {
         // Change this URL to your Render-deployed API
-        const response = await fetch(`https://your-app.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`, {
-          method: "POST"
+        const response = await fetch(`https://calculator-api-cisu.onrender.com/api/calculate?num1=${num1}&num2=${num2}&operator=${operator}`, {
+        method: "POST"
         });
+
 
         const result = await response.text();
         updateDisplay(result);
