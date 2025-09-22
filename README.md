@@ -14,13 +14,6 @@ Supports addition, subtraction, multiplication, and division.
 
 ---
 
-## Live Demo
-
-The Calculator app is deployed online and can be accessed here:  
-[Live Calculator](https://calculator-api-cisu.onrender.com)
-
----
-
 ## Technologies Used
 
 - Java 17
@@ -29,26 +22,4 @@ The Calculator app is deployed online and can be accessed here:
 - Maven
 
 ---
-Testing via Postman
 
-Open Postman and create a new POST request.
-
-Set the URL to your deployed backend or local instance:
-
-https://calculator-api-cisu.onrender.com/api/calculate
-
-In the Headers tab, add:
-
-Content-Type: application/json
-
-
-In the Body tab, select raw → JSON, and provide:
-
-{
-  "num1": 10,
-  "num2": 5,
-  "operator": "add"
-}
-
-
-Send the request and check the response.
